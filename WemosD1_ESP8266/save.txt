@@ -1,0 +1,48 @@
+#include <Arduino.h>
+#include <SPI.h>              // Required for the MicroOLED library
+#include <Wire.h>             // Required for the MicroOLED library
+//#include <SFE_MicroOLED.h>
+//#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+#define OLED_I2C_ADR 0      // I2C OLED display Address: 0 -> 0x3C (default) 1 - 0x3D
+#define OLED_PIN_RESET 255  // Reset pin not used
+//MicroOLED oled(OLED_PIN_RESET, OLED_I2C_ADR);
+Adafruit_SSD1306 oled(OLED_PIN_RESET);
+
+//int SCREEN_WIDTH  = oled.getLCDWidth();
+//int SCREEN_HEIGHT = oled.getLCDHeight();
+
+void setup() {
+  Serial.begin(115200);
+  Serial.println("Starting up!");
+  // Define the onboard pin connected to the LED as an output
+  pinMode( LED_BUILTIN, OUTPUT);
+
+  // Initialize the Oled shield.
+  // Note: The data on the OLED should change periodically, otherwise
+  // the Oled will burn out...
+  oled.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+  oled.clearDisplay();
+  oled.setTextSize(1);
+  oled.setCursor(0, 0);
+  oled.setTextColor(WHITE);
+}
+
+int sampleCounter = 0;
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+  oled.setCursor(0, 16);
+  oled.clearDisplay();
+  oled.println(sampleCounter++);
+  oled.display();
+
+  digitalWrite( LED_BUILTIN , HIGH);
+  delay(250);
+  digitalWrite( LED_BUILTIN, LOW );
+  delay(250);
+ 
+}
+

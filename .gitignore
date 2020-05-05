@@ -1,0 +1,8 @@
+.pio
+.clang_complete
+.gcc-flags.json
+.vscode
+.vscode/
+.travis.yml
+node_modules
+node_modules/
