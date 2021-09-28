@@ -1,15 +1,15 @@
 ﻿# AESCrypto Elliptic Curve Dilfie-Hellman key agreement test
 
-This code tests the communication of encrypted data from an ESP8266/ESP32 to a NodeJS server that receives AES128 CBC PKCS#7 encrypted message and decrypts it onboard.
-There key used for the AES128 encryption and decryption is negociated by using the DH key agreement protocol and using ellipti curves cryptography spceifically the Curve25519.
+This code tests the transfer of encrypted data from an ESP8266/ESP32 to a NodeJS server that receives an AES128 CBC PKCS#7 encrypted message.
+The key used for the AES128 encryption and decryption is negociated by using the DH key agreement protocol and using elliptic curves cryptography, specifically the Curve25519.
 
 This is a follow-up on the [comment section of my blog post regarding ESP8266/NodeJs and encryption](https://primalcortex.wordpress.com/2016/06/17/esp8266-logging-data-in-a-backend-aes-and-crypto-js/).
 
 The original post discusses encrypting data on the device and send it to a NodeJs server.
 
-Thei original code in this [repository](https://github.com/fcgdam/AESCrypto_Test), implements a test program that show cases sending and receiving data from and to the ESP8266 and NodeJS using AES128 encryption but using a pre-shared key.
+The original code in this [repository](https://github.com/fcgdam/AESCrypto_Test), implements a test program that show cases sending and receiving data from and to the ESP8266 and NodeJS using AES128 encryption but using a pre-shared key.
 
-This repository, as discussed in this Wordpress post: [Establishing secure ESP8266 and NodeJs communication by using Diffie-Hellman key exchange and Elliptic Curves](https://primalcortex.wordpress.com/?p=2086&preview=true) has the test program that enables the use of ephemeral negociated symmetric keys between the ESP and the NodeJS server, so no predefined key is necessary to be configured.
+This repository, as discussed in this Wordpress post: [Establishing secure ESP8266 and NodeJs communication by using Diffie-Hellman key exchange and Elliptic Curves](https://primalcortex.wordpress.com/?p=2086&preview=true), enables the use of ephemeral negociated symmetric keys between the ESP and the NodeJS server, so no predefined key is necessary to be configured.
 
 # Flashing the firmware on the ESP8266.
 
@@ -17,7 +17,7 @@ Install PlatformIO, and just run *pio run -t upload* to flash the board.
 
 But before doing that three things need to be changed: the SSID and Password of the WIFI access point must be modified and the IP address of the target NodeJs Server. Change it at the top of the *src/main.cpp* file.
 
-After connection, take note of the IP.
+After connection, take note of the ESP8266 IP by checking the ESP8266 Serial/USB output.
 
 # Testing ESP8266 to NodeJS
 
